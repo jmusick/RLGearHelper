@@ -1,0 +1,9 @@
+## Interface: 120001
+## Title: RL Gear Helper
+## Notes: Raid Leader Gear Helper - Midnight expansion raid trinkets with spec tier ratings
+## Author: Your Name
+## Version: 1.1.0
+## SavedVariables: RLGearHelperDB
+
+RLGearHelper.lua
+RLGearHelper.xml

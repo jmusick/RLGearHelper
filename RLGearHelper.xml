@@ -1,0 +1,145 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+    <Frame name="RLGearHelperFrame" parent="UIParent" movable="true" resizable="true" enableMouse="true" hidden="true" inherits="BackdropTemplate">
+        <Size>
+            <AbsDimension x="800" y="530"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER"/>
+        </Anchors>
+        <Layers>
+            <Layer level="ARTWORK">
+                <Texture name="$parentTitleBar" file="Interface\DialogFrame\UI-DialogBox-Header">
+                    <Size>
+                        <AbsDimension x="300" y="64"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="12"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+                <FontString name="$parentTitle" inherits="GameFontNormal" text="RL Gear Helper">
+                    <Anchors>
+                        <Anchor point="TOP" relativeTo="$parentTitleBar">
+                            <Offset>
+                                <AbsDimension x="0" y="-14"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-5" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parentRaidBtn1" inherits="UIPanelButtonTemplate">
+                <Size>
+                    <AbsDimension x="375" y="22"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="15" y="-38"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parentRaidBtn2" inherits="UIPanelButtonTemplate">
+                <Size>
+                    <AbsDimension x="375" y="22"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="15" y="-62"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parentRaidBtn3" inherits="UIPanelButtonTemplate">
+                <Size>
+                    <AbsDimension x="375" y="22"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="15" y="-86"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Frame name="$parentTrinketListFrame" enableMouse="true">
+                <Size>
+                    <AbsDimension x="375" y="362"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="15" y="-111"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Frame>
+            <Button name="$parentResizeButton" enableMouse="true">
+                <Size>
+                    <AbsDimension x="20" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="-4" y="4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <ScrollFrame name="$parentDetailsScrollFrame" inherits="UIPanelScrollFrameTemplate">
+                <Size>
+                    <AbsDimension x="375" y="477"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-15" y="-38"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <ScrollChild>
+                    <Frame name="$parentContent">
+                        <Size>
+                            <AbsDimension x="340" y="10"/>
+                        </Size>
+                    </Frame>
+                </ScrollChild>
+            </ScrollFrame>
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                self:RegisterForDrag("LeftButton")
+            </OnLoad>
+            <OnDragStart>
+                self:StartMoving()
+            </OnDragStart>
+            <OnDragStop>
+                self:StopMovingOrSizing()
+                RLGearHelper_SaveWindowPosition()
+            </OnDragStop>
+            <OnHide>
+                self:StopMovingOrSizing()
+            </OnHide>
+            <OnSizeChanged>
+                RLGearHelper_OnResize(self)
+                RLGearHelper_SaveWindowSize()
+            </OnSizeChanged>
+        </Scripts>
+    </Frame>
+</Ui>
